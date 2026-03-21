@@ -16,3 +16,14 @@ order_value: bigint
 user_id: bigint
 '''
 
+with cte as
+(select user_id, min(session_date) as session_date
+from sessions
+group by user_id)
+
+
+select c.user_id, session_date, count(order_id) as total_orders,
+sum(order_value) as total_order_value
+from cte c join order_summary o
+on c.user_id = o.user_id and c.session_date = o.order_date
+group by c.user_id, session_date
