@@ -21,7 +21,6 @@ with cte as
 from sessions
 group by user_id)
 
-
 select c.user_id, session_date, count(order_id) as total_orders,
 sum(order_value) as total_order_value
 from cte c join order_summary o
