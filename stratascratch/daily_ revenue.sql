@@ -16,7 +16,6 @@ transaction_date: date
 transaction_id: text
 type: text
 '''
-
 WITH cte AS (
     SELECT
         p.transaction_date,
