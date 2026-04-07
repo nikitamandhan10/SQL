@@ -15,6 +15,7 @@ order_id: bigint
 order_value: bigint
 user_id: bigint
 '''
+  
 with cte as
 (select user_id, min(session_date) as session_date
 from sessions
